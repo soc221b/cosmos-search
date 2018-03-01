@@ -61,21 +61,22 @@ def query(request):
                 folder = folder.split('/')
                 ans.append({'path': path, 'dirs': folder, 'files': filtered_v})
                 if len(folder) == 2:
-                    d = folder[len(folder)-2] + '/'
+                    d = folder[len(folder) - 2] + '/'
                 else:
-                    d = folder[len(folder)-3] + '/'
+                    d = folder[len(folder) - 3] + '/'
                 for i, j in data.items():
                         if d in i:
                             if not q in i:
                                 p = i
                                 p = p.split('/')
-                                l = p[len(p)-1]
+                                l = p[len(p) - 1]
                                 rec.append({'recpath': i, 'recdirs':p, 'last': l})
     if not ans:
         return render(request, 'cosmos/notfound.html', {'query': query})
     shuffle(rec)
     return render(request, 'cosmos/searchresults.html',
                   {'amount': len(ans), 'result': ans, 'recommend': rec[0:5], 'query': query})
+
 
 # search strategy
 def subsq(a, b, m, n):

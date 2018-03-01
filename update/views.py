@@ -13,6 +13,7 @@ def update_metadata(updated_at):
     with open(settings.METADATA_JSON, 'w') as f:
         json.dump(data, f)
 
+
 def update_tags(updated_at):
     topics = []
     data = {'updated_at' : updated_at}
@@ -24,6 +25,7 @@ def update_tags(updated_at):
                             topics))
     with open(settings.TAGS_JSON, 'w') as f:
         json.dump(data, f)
+
 
 def manage_webhook_event(event, payload):
     """Simple webhook handler that prints the event and payload to the console"""
@@ -41,6 +43,7 @@ def manage_webhook_event(event, payload):
             print("Cloning done!")
         update_metadata(updated_at)
         update_tags(updated_at)
+
 
 @csrf_exempt
 def github_webhook(request):
