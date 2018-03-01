@@ -3,7 +3,7 @@
     <title>"{{ query }}" | cosmos-search</title>
 {% endblock %}
 {% block body %}
-<h6>
+<h5>
     Showing <span style="color: #5D337F;">{{ amount }}</span> results for: <span style="color: #5D337F;">{{ query }}</span>
     <span>
         <a href="#" style="color: #1b1e21"><div data-network="twitter" class="st-custom-button fa fa-twitter-square"></div></a>
@@ -11,7 +11,7 @@
         <a href="#" style="color: #1b1e21"><div data-network="linkedin" class="st-custom-button fa fa-linkedin-square"></div></a>
         <a href="#" style="color: #1b1e21"><div data-network="googleplus" class="st-custom-button fa fa-google-plus-square"></div></a>
     </span>
-</h6>
+</h5>
 <hr> {% for entry in result %}
 <div class="card">
     <div class="card-body">
