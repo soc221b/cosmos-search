@@ -78,7 +78,8 @@ def query(request):
         return render(request, 'cosmos/notfound.html', {'query': query})
     shuffle(rec)
     return render(request, 'cosmos/searchresults.html',
-                  {'amount': amount, 'result': ans, 'recommend': rec[0:5], 'query': query})
+                  {'amount': amount, 'result': ans, 'recommend': rec[0:5],
+                  'query': query, 'algo_name': query})
 
 
 # search strategy
