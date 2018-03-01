@@ -4,6 +4,8 @@ import json
 import random
 from random import shuffle
 
+COSMOS_SEP = '_'
+
 # Create your views here
 
 # To prefill the searchbar
@@ -41,7 +43,7 @@ def error500(request):
 # Search query
 def query(request):
     query = request.GET['q']
-    q = query.replace(' ', '_')
+    q = query.replace(' ', COSMOS_SEP)
     data = json.loads(open(settings.METADATA_JSON, 'r').readline())
     ans = []
     rec = []
