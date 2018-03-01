@@ -13,7 +13,7 @@ def get_random_tag():
     jsonFile = open('tags.json', 'r')
     data = json.load(jsonFile)
     algo_list = data['tags']
-    r_no = random.randint(0,len(algo_list))
+    r_no = random.randint(0, len(algo_list) - 1)
     algo_tag = algo_list[r_no]
     return algo_tag
 
