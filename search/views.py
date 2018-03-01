@@ -9,7 +9,7 @@ COSMOS_SEP = '_'
 # Create your views here
 
 # To prefill the searchbar
-def searchbar():
+def get_random_tag():
     jsonFile = open('tags.json', 'r')
     data = json.load(jsonFile)
     algo_list = data['tags']
@@ -19,8 +19,8 @@ def searchbar():
 
 
 def index(request):
-    algo_tag = searchbar()
-    return render(request,'cosmos/index.html',{'algo_name':algo_tag})
+    algo_tag = get_random_tag()
+    return render(request, 'cosmos/index.html', {'algo_name': algo_tag})
 
 
 # Handlers for error pages
@@ -47,23 +47,23 @@ def query(request):
     data = json.loads(open(settings.METADATA_JSON, 'r').readline())
     ans = []
     rec = []
-    for k, v in data.items():
+    for folder, file in data.items():
         filtered_v = []
         try:
-            for f in v:
+            for f in file:
                 if f.split('.')[-1] != 'md':
                     filtered_v.append(f)
         except TypeError:
             print('TypeError')
-        if q in k:
+        if q in folder:
             if filtered_v:
-                path = k
-                k = k.split('/')
-                ans.append({'path': path, 'dirs': k, 'files': filtered_v})
-                if len(k) == 2:
-                    d = k[len(k)-2] + '/'
+                path = folder
+                folder = folder.split('/')
+                ans.append({'path': path, 'dirs': folder, 'files': filtered_v})
+                if len(folder) == 2:
+                    d = folder[len(folder)-2] + '/'
                 else:
-                    d = k[len(k)-3] + '/'
+                    d = folder[len(folder)-3] + '/'
                 for i, j in data.items():
                         if d in i:
                             if not q in i:
