@@ -48,6 +48,7 @@ def query(request):
     data = json.loads(open(settings.METADATA_JSON, 'r').readline())
     ans = []
     rec = []
+    amount = 0
     for folder, file in data.items():
         filtered_v = []
         try:
@@ -61,6 +62,7 @@ def query(request):
                 path = folder
                 folder = folder.split('/')
                 ans.append({'path': path, 'dirs': folder, 'files': filtered_v})
+                amount += len(filtered_v)
                 if len(folder) == 2:
                     d = folder[len(folder) - 2] + '/'
                 else:
@@ -76,7 +78,7 @@ def query(request):
         return render(request, 'cosmos/notfound.html', {'query': query})
     shuffle(rec)
     return render(request, 'cosmos/searchresults.html',
-                  {'amount': len(ans), 'result': ans, 'recommend': rec[0:5], 'query': query})
+                  {'amount': amount, 'result': ans, 'recommend': rec[0:5], 'query': query})
 
 
 # search strategy
