@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <h5>Human-Curated Lists Results</h5>
+{% extends 'cosmos/header.html' %}
+{% block main %}
+<main>
+    <h5 class="text-center w-100">Human-Curated Lists Results</h5>
     <hr>
     {% for item in query_lists %}
         <div class="content" style="border: 2px solid #e5e5e5; border-radius: 10px; background-color: #ffffff; padding: 10px;">
@@ -11,4 +12,5 @@
         <p></p>
     {% endfor %}
     <hr>
-</html>
+</main>
+{% endblock %}
