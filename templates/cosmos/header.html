@@ -127,7 +127,7 @@ article {
 
 
 <script>
-        
+
 {% block javascript %}
 {% endblock %}
 $(document).ready(function() {
@@ -142,7 +142,7 @@ $(document).ready(function() {
 });
 function focus() {
   $("#search").select();
-  
+
 }
 $("#formq").submit(function () {
     if ($('input').val().replace(/[\s,\/#!$%\^&\*;:{}=\-_`~().]/g, '').length === 0) {
